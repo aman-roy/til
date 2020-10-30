@@ -1,0 +1,16 @@
+title: Today I Learned # The title of the blog
+author: Aman Roy # Your name 
+email: admin@amanroy.me # your email shown in the footer
+url: http://til.amanroy.me # this is your site's root address.
+description: > # this means to ignore newlines until "show_excerpts:"
+  A secret place where I jot down technical stuff to take reference and act smart when the time comes.
+favicon: "./favicon.ico" # set the favicon of the site 
+
+show_excerpts: true # set to true to show excerpts on the homepage
+
+# Build settings
+theme: moving # note, please use huangyz0918/moving if you want to publish to Github Pages.
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
