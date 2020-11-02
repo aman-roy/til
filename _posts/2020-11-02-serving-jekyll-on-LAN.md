@@ -13,7 +13,7 @@ Most commonly, for making the Jekyll site available to localhost, the command us
 bundle exec jekyll serve
 ```
 
-While serving it on the localhost, sometimes I felt the need of serving it to the whole network. Making it available to the whole network will allow the blogger/developer to test the website while it is made on smartphones also. 
+While serving it on the localhost, I felt the need of serving it to the whole network. Doing that will allow the blogger/developer to test the website on smartphones or other devices while making the changes. 
 
 For serving on the complete local area network, use `--host` flag along with the value `0.0.0.0`.
 
