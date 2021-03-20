@@ -5,7 +5,7 @@ author: "Aman Roy"
 author_link: "http://amanroy.me"
 ---
 
-This hack will help in streaming a pre-recorded video like a webcam video in an ubuntu-based Linux distro.
+This hack will help in streaming a pre-recorded video as a webcam video in an ubuntu-based Linux distro.
 
 ## **Method**
 
