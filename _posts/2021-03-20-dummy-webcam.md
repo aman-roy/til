@@ -5,9 +5,9 @@ author: "Aman Roy"
 author_link: "http://amanroy.me"
 ---
 
-This hack will help in streaming a pre-recorded video as a webcam video in an ubuntu-based Linux distro.
+This method will help in streaming a pre-recorded video as a webcam video in an ubuntu-based Linux distro.
 
-## **Method**
+## **Procedure**
 
 **Step 1 :** Install `ffmpeg` and `v4l-utils`.
 ```shell
@@ -23,7 +23,7 @@ make
 sudo make install
 ```
 
-**<span style="color: red;">(Optional step: Only if step 2 fails)</span>** 
+**<span style="color: red;">(Optional step: Only if above command fails)</span>** 
 ```shell
 git clone https://github.com/umlaeute/v4l2loopback.git
 cd v4l2loopback
@@ -34,21 +34,21 @@ sudo dkms build -m v4l2loopback -v 1.1
 sudo dkms install -m v4l2loopback -v 1.1
 ```
 
-**Step 3 :** Record video from any application (**cheese** if you are using ubuntu) and save it on device.
+**Step 3 :** Record video from any application (**cheese** in ubuntu) and save it in home directory with the name `input.webm`.
 
-**Step 4 :** Enlarge video by looping it `n` number of times. Let's say if I want a 60 minutes video and the recorded video is of 1 min. Looping the recorded video 60 times will make it enlarged as expected.
+**Step 4 :** Enlarge the recorded video from previous step to a **1 hour video** by looping it **60 times**.
 ```shell
 for i in {1..60}; do printf "file '%s'\n" input.webm >> list.txt; done
 ffmpeg -f concat -i list.txt -c copy output.webm
 ```
-**<span style="color: red;">Note: Change `{1..60}` as required. Also change the video file name to input.webm or anything else accordingly.</span>**
+<span style="color: red;">Note: Change `{1..60}` as required.</span>
 
-**Step 5 :** Start the virtual webcam. **(Do it every time when restarted)**
+**Step 5 :** Start the virtual webcam. **(Do it every time when your system is restarted)**
 ```shell
 sudo modprobe v4l2loopback exclusive_caps=1
 ```
 
-**Step 6 :** Know where the dummy webcam has been made.
+**Step 6 :** Know the path where the newly created dummy webcam is present and make a note of it.
 ```shell
 v4l2-ctl --list-devices
 ```
@@ -56,13 +56,11 @@ v4l2-ctl --list-devices
 
 ![v4l2-ctl --list-devices output](/assets/images/Dummy_video/list_device.png)
 
-<span style="color: red;">Take a note of the above path </span>
-
 **Step 7 :** Stream
 ```shell
-ffmpeg -re -i ~/Desktop/output.webm -map 0:v -f v4l2 /dev/video2
+ffmpeg -re -i output.webm -map 0:v -f v4l2 /dev/video2
 ```
-<span style="color: red;">Note: change `/dev/video` according to what you got from step 6.</span>
+<span style="color: red;">Note: change `/dev/video2` according to what you got from step 6.</span>
 
 
 **Step 8 :** Change webcam setting and choose the dummy video option on any website or application.
@@ -71,4 +69,12 @@ ffmpeg -re -i ~/Desktop/output.webm -map 0:v -f v4l2 /dev/video2
 
 
 
-Finish!
+Fin.
+
+---
+
+#### **References**
+
+<https://video.stackexchange.com/a/12906 />
+
+<https://stackoverflow.com/a/46438765 />
